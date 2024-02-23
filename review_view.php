@@ -84,6 +84,7 @@ include "commanpages/connection.php";
                 </div>
                 <div class="card-body">
                   <div class="table-responsive">
+                    <form method="post" >
                     <table class="display" id="advance-1">
                       <thead>
                         <tr>
@@ -113,6 +114,7 @@ include "commanpages/connection.php";
                         ?>
                           <tr>
                             <td><?php echo $count ?> </td>
+                            <!-- <td><?php echo $row["is_display"]  ?></td> -->
                             <td><?php echo $row["tittle"]  ?></td>
                             <td><?php echo $row["name"]  ?></td>
                             <td><?php echo $row["review_text"]  ?></td>
@@ -174,6 +176,7 @@ include "commanpages/connection.php";
                       <?php
                       ?>
                     </table>
+                    </form>
                   </div>
                 </div>
               </div>

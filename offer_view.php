@@ -87,12 +87,12 @@ include "commanpages/connection.php";
                 </div>
                 <div class="card-body">
                   <div class="table-responsive">
+                    <form  action="#" method="post" >
                     <table class="display" id="advance-1">
                       <thead>
                         <tr>
                           <th>#</th>
                           <th>Tittle</th>
-                          <th>Is Active</th>
                           <th>Minimum</th>
                           <th>Maximum</th>
                           <th>Discount</th>
@@ -113,11 +113,13 @@ include "commanpages/connection.php";
                           <tr>
                             <td><?php echo $count ?> </td>
                             <td><?php echo $row["tittle"]  ?></td>
-                            <td><?php echo $row["is_active"]  ?></td>
                             <td><?php echo $row["min"]  ?></td>
                             <td><?php echo $row["max"]  ?></td>
                             <td><?php echo $row["discount"]  ?></td>
-                            <td><?php echo $row["is_active"]  ?></td>
+                            <td><div class="card-body btn-showcase">
+                    <button class="btn btn-outline-primary btn-sm" type="button"><?php echo $row["is_display"];?></button>
+                    </div>
+                                    </td>
 
                             <td>
 
@@ -180,6 +182,7 @@ include "commanpages/connection.php";
                       }
                       ?>
                     </table>
+                    </form>
                   </div>
                 </div>
               </div>

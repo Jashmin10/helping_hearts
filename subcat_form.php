@@ -102,7 +102,7 @@ include "commanpages/connection.php";
                          }
                         ?>
                       </select>
-                     
+                      </div>
                         <div class="mb-3">
                           <label class="col-form-label pt-0" for="exampleInputState">Sub Category</label>
                           <input class="form-control" name="name" type="text" placeholder="Enter Subcategory name">

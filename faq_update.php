@@ -91,12 +91,13 @@ include "commanpages/connection.php";
                         if(isset($_GET["selectid"]))
                         {
                           $id = $_GET["selectid"];
-                         $sql="select * from tbl_faq where faq_id = $id ;";
+                         $sql="select * from tbl_faq where faq_id = '$id' ;";
                          $result = mysqli_query($conn,$sql) or die(mysqli_error($conn));
                          while($row = mysqli_fetch_assoc($result))
                          {
                           $que = $row["question"];
                           $ans = $row["answer"];
+                          
                           ?>
                           <div class="mb-3">
                           <label class="col-form-label pt-0" for="exampleInputState">Question</label>

@@ -87,6 +87,7 @@ include "commanpages/connection.php";
                 </div>
                 <div class="card-body">
                   <div class="table-responsive">
+                    <form  method="post" action="#">
                     <table class="display" id="advance-1">
                       <thead>
                         <tr>
@@ -113,7 +114,10 @@ include "commanpages/connection.php";
                             <td><?php echo $count ?> </td>
                             <td><?php echo $row["tittle"]  ?></td>
                             <td> <img src= "<?php echo 'uploads/artical_img/'.$row["img1"]?>" height="80px" width="80px" /> </td>
-                            <td><?php echo $row["is_active"]?></td>
+                            <td><div class="card-body btn-showcase">
+                    <button class="btn btn-outline-primary btn-sm" type="button"><?php echo $row["is_active"];?></button>
+                    </div>
+                                    </td>
                             <td>
 
                               <a href="artical_update.php?selectid=<?php echo $id; ?>"><i data-feather="edit"></i></a>   
@@ -182,6 +186,7 @@ include "commanpages/connection.php";
                       }
                       ?>
                     </table>
+                    </form>
                   </div>
                 </div>
               </div>

@@ -17,7 +17,7 @@
     <meta name="author" content="pixelstrap">
     <link rel="icon" href="assets/images/helping.png" type="image/x-icon">
     <link rel="shortcut icon" href="assets/images/helping.png" type="image/x-icon">
-    <title>Cart Details</title>
+    <title>Past Donation</title>
     <!-- Google font-->
     <link rel="preconnect" href="https://fonts.gstatic.com/">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
@@ -63,13 +63,14 @@
             <div class="page-header">
               <div class="row">
                 <div class="col-sm-6">
-                  <h3>Cart Management</h3>
+                  <h3>Pendong Donation</h3>
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
-                    <li class="breadcrumb-item">Products Details</li>
-                    <li class="breadcrumb-item active">Cart Management</li>
+                    <li class="breadcrumb-item">Donation</li>
+                    <li class="breadcrumb-item active">Past Donation</li>
                   </ol>
                 </div>
+                
               </div>
             </div>
           </div>
@@ -87,35 +88,52 @@
                         <thead>
                           <tr>
                             <th>#</th>
-                            <th>Product </th>
-                            <th>User name</th>
-                            <th>Quantity</th>
-                            <th>Date & time</th>
-                           
+                            <!-- <th>ApproxFood in KG</th> -->
+                            <th>Items</th>
+                            <th>Type</th>
+                            <th>Image 1</th>
+                            <th>Image 2</th>
+                            <th>Description</th>
+                            <th>Status</th>
+                            <th>Datetime</th>
+                        
+                            
                           </tr>
                         </thead>
                         <tbody>
                             <?php 
                             $count=0;
-                                $sql="select * from tbl_cart inner join tbl_products on tbl_cart.product_id=tbl_products.product_id
-                                inner join tbl_user on tbl_cart.user_id=tbl_user.user_id;";
+                            //include('db_conn.php');
+                                $sql="select * from tbl_donation where status='done';";
                                 $result = mysqli_query($conn,$sql) or die(mysqli_error($conn));
                                  while($row = mysqli_fetch_assoc($result))
                                  {
                                      $count++;
-                                    $id=$row["cart_id"];
-                                    $name=$row["name"];
-                                    $qty=$row["qty"];
-                                    $dt=$row["added_datetime"];
-                                   
+                                    $id=$row["donation_id"];
+                                    // $food_in_kg=$row["approxfood_inkg"];
+                                    $items=$row["items"];
+                                    $type=$row["type"];
+                                    $img1=$row["img1"];
+                                    $img2=$row["img2"];
+                                    $desc=$row["description"];
+                                    $status=$row["status"];
+                                    $dt=$row["datetime"];
                                     ?>
                                      <tr>
                                       <td><?php echo $count ?> </td>
-                                      <td><?php echo $row["tittle"]?></td>
-                                      <td><?php echo $row["name"]?></td>
-                                      <td><?php echo $row["qty"]?></td>
-                                      <td><?php echo $row["added_datetime"]?></td>
-                                    </tr>
+                                     
+                                      <td><?php echo $row["items"]  ?></td>
+                                      <td><?php echo $row["type"]  ?></td>
+                                      <td><?php echo $row["img1"]  ?></td>
+                                      <td><?php echo $row["img2"]  ?></td>
+                                      <td><?php echo $row["description"]  ?></td>
+                                      <td><?php echo $row["status"]  ?></td>
+                                      <td><?php echo $row["datetime"]  ?></td>
+
+                                       <td>
+                                      
+                                       </td>
+                                       </tr>
                           <?php 
                                 }
                              ?>
@@ -125,12 +143,17 @@
                         </tbody>
                         <tfoot>
                           <tr>
-                          <th>#</th>
-                            <th>Product </th>
-                            <th>User name</th>
-                            <th>Quantity</th>
-                            <th>Date & time</th>
-    
+                            <th>#</th>
+                            <!-- <th>ApproxFood in KG</th> -->
+                            <th>Items</th>
+                            <th>Type</th>
+                            <th>Image 1</th>
+                            <th>Image 2</th>
+                            <th>Description</th>
+                            <th>Status</th>
+                            <th>Datetime</th>
+                          
+
                           </tr>
                         </tfoot>
                         <?php 
@@ -138,15 +161,8 @@
                       if(isset($_POST["deletebtnM"]))
                       {
                         $delid=$_POST['deleteid'];
-                        $result = mysqli_query($conn,"select * from tbl_volunteers WHERE vol_id=$delid;")or die(mysqli_error($conn));
-                        while ($row = mysqli_fetch_assoc($result))
-                        {
-                          unlink("uploads/vol_img/".$row['vol_img']);
-                        }
-
-                        mysqli_query($conn,"DELETE FROM tbl_volunteers WHERE vol_id=$delid;") or die(mysqli_error($conn));
-                        
-                        echo "<script>window.location='vol_view.php'; </script>";
+                        mysqli_query($conn,"DELETE FROM tbl_user WHERE user_id=$delid") or die(mysqli_error($conn));
+                        echo "<script>window.location='user_view.php'; </script>";
                       }
                       ?>
                       </table>
@@ -181,5 +197,16 @@
     <!-- login js-->
     <!-- Plugin used-->
   </body>
+  <script>
+          $(document).ready(function(){
+            $(".deletebtn").click(function(){
+
+                var id = $(this).attr('data-id');
+                $("#deleteid").val(id);
+                //$("#mydata").val(id);
+
+            });
+          });
+          </script>
 <!-- Mirrored from admin.pixelstrap.com/viho/theme/datatable-advance.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 17 Nov 2021 08:24:30 GMT -->
 </html>

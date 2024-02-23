@@ -59,8 +59,8 @@
                   <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="box"></i><span>Donation</span></a>
                     <ul class="nav-submenu menu-content">
                       <li><a href="assign_view.php">Assign Volunteer</a></li>
-                      <li><a href="#">Pending Donation</a></li>
-                      <li><a href="#">Past Donation</a></li>
+                      <li><a href="pending_donationview.php">Pending Donation</a></li>
+                      <li><a href="past_donation.php">Past Donation</a></li>
                     </ul>
                   </li>
                   <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="box"></i><span>Product</span></a>

@@ -185,6 +185,7 @@ include "commanpages/connection.php";
                             $oldimg2=$_POST["oldimg2"];
                             $vu=$_POST["video_url"];
                             $rl =$_POST["ref_link"];
+                            $_radioSelect = $_POST["is_active"];
                             $newimg="";
                             $newimg2="";
 
@@ -217,7 +218,7 @@ include "commanpages/connection.php";
                                 move_uploaded_file($_FILES["img2"]["tmp_name"], $uploadDirectory.$imgname2);
                                 $newimg2 = $imgname2;
                               }
-                              $sql = "update tbl_article set tittle='$tit', description='$desc', img1='$newimg', img2='$newimg2', video_url='$vu', ref_link='$rl' where article_id='$id'  ;";
+                              $sql = "update tbl_article set tittle='$tit', description='$desc', img1='$newimg', img2='$newimg2', video_url='$vu', ref_link='$rl', is_active='$_radioSelect' where article_id='$id'  ;";
                               $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
                               echo "<script> window.location='artical_view.php'; </script>";
                            

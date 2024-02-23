@@ -87,6 +87,7 @@ include "commanpages/connection.php";
                 </div>
                 <div class="card-body">
                   <div class="table-responsive">
+                    <form  method="post">
                     <table class="display" id="advance-1">
                       <thead>
                         <tr>
@@ -131,7 +132,10 @@ include "commanpages/connection.php";
                             <td> <img src= "<?php echo 'uploads/artical_img/'.$row["img2"]?>" height="80px" width="80px" /> </td>
                             <td><?php echo $row["video_url"]  ?></td>
                             <td><?php echo $row["ref_link"]  ?></td>
-                            <td><?php echo $row["is_active"]  ?></td>
+                            <td><div class="card-body btn-showcase">
+                    <button class="btn btn-outline-primary btn-sm" type="button"><?php echo $row["is_active"];?></button>
+                    </div>
+                                    </td>
 
                             <td>
 
@@ -181,6 +185,7 @@ include "commanpages/connection.php";
                         }
                       ?>
                     </table>
+                      </form>
                   </div>
                 </div>
               </div>

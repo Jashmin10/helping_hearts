@@ -87,6 +87,7 @@ include "commanpages/connection.php";
                    
                     <div class="card-body">
                       <form class="theme-form" method="post" id="_frm">
+                        <div class="mb-3">
                       <label class="col-form-label pt-0" for="exampleInputState">FAQ Category</label>
                         <select class="form-control" name="faqcat_id">
                         <?php 
@@ -100,6 +101,8 @@ include "commanpages/connection.php";
                          }
                         ?>
                       </select>
+                        </div>
+                      
                 
                      
                         <div class="mb-3">
@@ -138,9 +141,6 @@ include "commanpages/connection.php";
                     </div>
                     <?php
                         }
-
-                        
-                  
                       }
                       ?> 
                     </div>

@@ -135,11 +135,11 @@ include "commanpages/connection.php";
                           $sql = "insert into tbl_offers(tittle, min, max, discount,is_display) values('$tt', '$min', '$max', '$dis', '$_radioSelect');";
                           $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
                       
-                      ?>
+                      
                           echo "<script>
                             window.location = 'offer_view.php';
                           </script>";
-                        <?php
+                        
                         } else {
                         ?>
                           <div class="alert alert-danger inverse alert-dismissible fade show" role="alert"><i class="icon-thumb-down"></i>

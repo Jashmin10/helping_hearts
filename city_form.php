@@ -177,16 +177,39 @@ include "commanpages/connection.php";
   return this.optional(element) || /^[a-z]+$/i.test(value);
 }, "Letters only please");
 
-jQuery.validator.addMethod("noSpace", function(value, element) { 
-  return value.indexOf(" ") < 0 && value != ""; 
+jQuery.validator.addMethod("noSpace", function(value, element) {
+  // Regular expression to check if the value has leading or trailing spaces
+  var leadingTrailingSpaceRegex = /^\s+|\s+$/g;
+  return !leadingTrailingSpaceRegex.test(value);
 }, "No space please and don't leave it empty");
+
+
+
+    $("#_frm").validate({
+        rules: {
+            city_name:{
+                required: true,
+                minlength: 3,
+                lettersonly: true,
+                noSpace: true
+            }
+        },
+        messages: {
+            city_name:{
+                required: "Blank is not allowed.",
+                minlength: "At least 3 letters are required.",
+                lettersonly: "Numbers and special characters are not allowed.",
+                noSpace: "Leading or trailing spaces are not allowed."
+            }
+        }
+    });
 
       $("#_frm").validate({
         rules: {
           city_name:{
             required:true,
             minlength:3,
-            lettersonly:true,
+            //lettersonly:true,
             noSpace :true,
 
           }
@@ -195,7 +218,7 @@ jQuery.validator.addMethod("noSpace", function(value, element) {
           city_name:{
             required:"Blank is not allowed.",
             minlength:"atleast 3 letter is required.",
-            lettersonly:"Numbers and spacialcharecter are not allow.",
+            //lettersonly:"Numbers and spacialcharecter are not allow.",
             noSpace : "Space is not alloewd"
           }
         }
