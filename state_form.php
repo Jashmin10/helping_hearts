@@ -177,7 +177,7 @@ jQuery.validator.addMethod("noSpace", function(value, element) {
           state_name:{
             required:true,
             minlength:3,
-            lettersonly:true,
+            //lettersonly:true,
             noSpace :true,
             
           }
@@ -186,7 +186,7 @@ jQuery.validator.addMethod("noSpace", function(value, element) {
           state_name:{
             required:"Blank is not allowed.",
             minlength:"atleast 3 letter is required.",
-            lettersonly:"Numbers and spacialcharecter are not allow.",
+            //lettersonly:"Numbers and spacialcharecter are not allow.",
             noSpace : "Space is not alloewd"
 
           }
