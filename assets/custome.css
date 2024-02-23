@@ -1,0 +1,8 @@
+.error{
+    color: #dc3545;
+    margin: 0;
+}
+.form-control.error
+{
+    border: 1px solid #dc3545;
+}
