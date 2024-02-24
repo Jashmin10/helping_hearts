@@ -114,10 +114,40 @@ include "commanpages/connection.php";
                             <td><?php echo $count ?> </td>
                             <td><?php echo $row["tittle"]  ?></td>
                             <td> <img src= "<?php echo 'uploads/artical_img/'.$row["img1"]?>" height="80px" width="80px" /> </td>
-                            <td><div class="card-body btn-showcase">
-                    <button class="btn btn-outline-primary btn-sm" type="button"><?php echo $row["is_active"];?></button>
-                    </div>
-                                    </td>
+                            <td>
+                              <?php 
+                              if($row["is_active"]=="yes")
+                              {
+                              
+                                echo '<button class="btn btn-pill btn-danger" type="submit" name="btn_no" value="'.$id.'">No</button>';
+                              }
+                              else{
+                                echo '<button class="btn btn-pill btn-primary" type="submit" name="btn_yes" value="'.$id.'">Yes</button>';
+                              }
+                             
+
+                              if(isset($_POST["btn_no"])) {
+                                 $t = $_POST["btn_no"];
+                                $sql = "UPDATE tbl_article SET is_active='no' WHERE article_id='$t'";
+                                $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+                                              
+                                // Redirect
+                                echo "<script>window.location='artical_view.php';</script>";
+                            }
+                            
+                            if(isset($_POST["btn_yes"])) {
+                              $t = $_POST["btn_yes"];
+                             $sql = "UPDATE tbl_article SET is_active='yes' WHERE article_id='$t'";
+                             $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+                                           
+                             // Redirect
+                             echo "<script>window.location='artical_view.php';</script>";
+
+                         }
+                            
+                              ?>
+                              
+                          </td>
                             <td>
 
                               <a href="artical_update.php?selectid=<?php echo $id; ?>"><i data-feather="edit"></i></a>   

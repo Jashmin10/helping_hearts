@@ -159,11 +159,6 @@ include "commanpages/connection.php";
                             <label>No</label>
                           </div>
                     </div>
-                    <div>
-                      
-
-                    </div>
-             
                 </div>
                 
                 <?php
@@ -176,6 +171,7 @@ if (isset($_POST["btn_sub"])) {
   $description = $_POST["description"];
   $video_url = $_POST["video_url"];
   $_radioSelect = $_POST["is_active"];
+
 
   
   $ext = pathinfo($_FILES["img1"]["name"], PATHINFO_EXTENSION);

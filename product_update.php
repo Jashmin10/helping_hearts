@@ -218,6 +218,7 @@ include "commanpages/connection.php";
                             $old3=$_POST["oldimg3"];
                             $vu=$_POST["video_url"];
                             $price =$_POST["price"];
+                            $_radioSelect = $_POST["is_active"];
                             $newimg="";
                             $newimg2="";
                             $newimg3="";
@@ -269,7 +270,7 @@ include "commanpages/connection.php";
 
                                 $newimg3 = $imgname3;
                               }
-                              $sql = "update tbl_products set tittle='$tit',subcat_id='$subcat', description='$desc', price='$price',video_url='$vu', img1='$newimg',img2='$newimg2',img3='$newimg3' where product_id='$id'  ;";
+                              $sql = "update tbl_products set tittle='$tit',subcat_id='$subcat', description='$desc', price='$price',video_url='$vu', img1='$newimg',img2='$newimg2',img3='$newimg3',is_active='$_radioSelect' where product_id='$id'  ;";
                               $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
                               echo "<script> window.location='product_view.php'; </script>";
                            

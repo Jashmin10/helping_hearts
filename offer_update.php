@@ -160,13 +160,15 @@ include "commanpages/connection.php";
                             $min = $_POST["min"];
                             $max = $_POST["max"];
                             $dis = $_POST["disc"];
+                            $_radioSelect = $_POST["is_display"];
+
                            $sql= "select * from tbl_offers where tittle = '$tt';";
                            $result = mysqli_query($conn,$sql) or die (mysqli_error($conn));
                            $row = mysqli_num_rows($result);
                            if($row==0)
                            {
                          
-                          $sql="update tbl_offers set tittle='$tt', min='$min', max='$max', discount='$dis' where offer_id='$id' ;";
+                          $sql="update tbl_offers set tittle='$tt', min='$min', max='$max', discount='$dis',is_display='$_radioSelect' where offer_id='$id' ;";
                           $result = mysqli_query($conn,$sql) or die(mysqli_error($conn));
                           echo "<script> window.location='offer_view.php'; </script>";
                            }

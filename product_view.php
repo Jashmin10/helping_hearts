@@ -86,6 +86,7 @@
                   </div>
                   <div class="card-body">
                     <div class="table-responsive">
+                      <form method="post">
                       <table class="display" id="advance-1">
                         <thead>
                           <tr>
@@ -94,6 +95,7 @@
                             <th>Product </th>
                             <th>Sub Category</th>
                             <th>Price</th>
+                          <th>Is Active</th>
                             <th>Action</th>
                             
                           </tr>
@@ -117,6 +119,42 @@
                                       <td><?php echo $row["tittle"]?></td>
                                       <td><?php echo $row["name"]?></td>
                                       <td><?php echo $row["price"]?></td>
+                                      <td>
+                              <?php 
+                              if($row["is_active"]=="yes")
+                              {
+                              
+                                echo '<button class="btn btn-pill btn-danger" type="submit" name="btn_no" value="'.$id.'">No</button>';
+                              }
+                              else{
+                                echo '<button class="btn btn-pill btn-primary" type="submit" name="btn_yes" value="'.$id.'">Yes</button>';
+                              }
+                             
+
+                              if(isset($_POST["btn_no"])) {
+                                 $t = $_POST["btn_no"];
+                                $sql = "UPDATE tbl_products SET is_active='no' WHERE product_id='$t'";
+                                $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+                                              
+                                // Redirect
+                                echo "<script>window.location='product_view.php';</script>";
+
+                            }
+                            
+                            if(isset($_POST["btn_yes"])) {
+                              $t = $_POST["btn_yes"];
+                             $sql = "UPDATE tbl_products SET is_active='yes' WHERE product_id='$t'";
+                             $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+                                           
+                             // Redirect
+                             echo "<script>window.location='product_view.php';</script>";
+
+
+                         }
+                            
+                              ?>
+                              
+                          </td>
                                        <td>
                                        <a href="product_update.php?selectid=<?php echo $id; ?>"><i data-feather="edit"></i></a>  
                                        <a href="#" class="deletebtn" data-id="<?php echo $id;  ?>"  data-bs-toggle="modal" data-original-title="test" data-bs-target="#exampleModal"><i data-feather="trash"></i></a>                                      
@@ -158,6 +196,8 @@
                             <th>Product </th>
                             <th>Sub Category</th>
                             <th>Price</th>
+                          <th>Is Active</th>
+
                             <th>Action</th>
                             
                           </tr>
@@ -181,6 +221,7 @@
                       }
                       ?>
                       </table>
+                      </form>
                     </div>
                   </div>
                 </div>

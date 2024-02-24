@@ -116,10 +116,41 @@ include "commanpages/connection.php";
                             <td><?php echo $row["min"]  ?></td>
                             <td><?php echo $row["max"]  ?></td>
                             <td><?php echo $row["discount"]  ?></td>
-                            <td><div class="card-body btn-showcase">
-                    <button class="btn btn-outline-primary btn-sm" type="button"><?php echo $row["is_display"];?></button>
-                    </div>
-                                    </td>
+                            <td>
+                              <?php 
+                              if($row["is_display"]=="yes")
+                              {
+                              
+                                echo '<button class="btn btn-pill btn-danger" type="submit" name="btn_no" value="'.$id.'">No</button>';
+                              }
+                              else{
+                                echo '<button class="btn btn-pill btn-primary" type="submit" name="btn_yes" value="'.$id.'">Yes</button>';
+                              }
+                             
+
+                              if(isset($_POST["btn_no"])) {
+                                 $t = $_POST["btn_no"];
+                                $sql = "UPDATE tbl_offers SET is_display='no' WHERE offer_id='$t'";
+                                $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+                                              
+                                // Redirect
+                                echo "<script>window.location='offer_view.php';</script>";
+                            }
+                            
+                            if(isset($_POST["btn_yes"])) {
+                              $t = $_POST["btn_yes"];
+                             $sql = "UPDATE tbl_offers SET is_display='yes' WHERE offer_id='$t'";
+                             $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+                                           
+                             // Redirect
+                             echo "<script>window.location='offer_view.php';</script>";
+
+
+                         }
+                            
+                              ?>
+                              
+                          </td>
 
                             <td>
 
